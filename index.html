@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ТСН СНТ "Родничок" - Официальный сайт</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2E7D32;
+            --secondary-color: #66BB6A;
+            --accent-color: #4CAF50;
+            --text-color: #333;
+            --light-bg: #f5f5f5;
+            --white: #ffffff;
+            --gray: #757575;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        /* Шапка */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: #90EE90;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        /* Навигация */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Основной контент */
+        main {
+            margin-top: 80px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+        }
+
+        /* Герой секция */
+        .hero {
+            background: linear-gradient(rgba(46, 125, 50, 0.8), rgba(76, 175, 80, 0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f8f0" width="1200" height="600"/><path fill="%23e8f5e8" d="M0 300L50 325L100 300L150 275L200 300L250 325L300 300L350 275L400 300L450 325L500 300L550 275L600 300L650 325L700 300L750 275L800 300L850 325L900 300L950 275L1000 300L1050 325L1100 300L1150 275L1200 300V600H0V300Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 80px 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--white);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Секции */
+        .section {
+            background: var(--white);
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 2rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        /* Новости */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .news-card {
+            background: var(--light-bg);
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .news-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .news-title {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* Документы */
+        .docs-list {
+            list-style: none;
+        }
+
+        .docs-list li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: var(--light-bg);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .docs-list li:hover {
+            background-color: #e8f5e8;
+        }
+
+        .docs-list i {
+            color: var(--primary-color);
+        }
+
+        /* Контакты */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .contact-item i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Футер */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0 15px;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            main {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                padding: 40px 15px;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-tint"></i>
+                <h1>ТСН СНТ "Родничок"</h1>
+            </div>
+            <nav>
+                <button class="mobile-menu-btn" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul id="navMenu">
+                    <li><a href="#news">Новости</a></li>
+                    <li><a href="#docs">Документы</a></li>
+                    <li><a href="#info">Информация</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Добро пожаловать в ТСН СНТ "Родничок"</h2>
+            <p>Ваш надежный партнер в управлении садовым товариществом</p>
+            <a href="#news" class="btn">Последние новости</a>
+        </section>
+
+        <section id="news" class="section">
+            <h2><i class="fas fa-newspaper"></i> Новости</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-date">15 августа 2025</div>
+                    <h3 class="news-title">Отключение электричества 18 августа</h3>
+                    <p>В связи с плановыми работами на ЛЭП 18 августа с 9:00 до 17:00 будет отключено электричество на участках 1-50.</p>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">10 августа 2025</div>
+                    <h3 class="news-title">Субботник 24 августа</h3>
+                    <p>Приглашаем всех членов товарищества на общий субботник. Начало в 10:00. Не забудьте взять инвентарь!</p>
+                </div>
+                <div class="news-card">
+                    <div class="news-date">5 августа 2025</div>
+                    <h3 class="news-title">Водоснабжение восстановлено</h3>
+                    <p>Работы по ремонту водопровода завершены. Подача воды на участки восстановлена в полном объеме.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="docs" class="section">
+            <h2><i class="fas fa-file-alt"></i> Документы</h2>
+            <ul class="docs-list">
+                <li>
+                    <i class="fas fa-file-pdf"></i>
+                    <a href="#">Устав ТСН СНТ "Родничок"</a> (PDF, 2.3 МБ)
+                </li>
+                <li>
+                    <i class="fas fa-file-pdf"></i>
+                    <a href="#">Положение о членских взносах 2025</a> (PDF, 850 КБ)
+                </li>
+                <li>
+                    <i class="fas fa-file-pdf"></i>
+                    <a href="#">Правила пользования общим имуществом</a> (PDF, 1.1 МБ)
+                </li>
+                <li>
+                    <i class="fas fa-file-excel"></i>
+                    <a href="#">Квитанции на оплату (шаблон)</a> (Excel, 45 КБ)
+                </li>
+                <li>
+                    <i class="fas fa-file-word"></i>
+                    <a href="#">Заявление на подключение к электросетям</a> (Word, 28 КБ)
+                </li>
+            </ul>
+        </section>
+
+        <section id="info" class="section">
+            <h2><i class="fas fa-info-circle"></i> Полезная информация</h2>
+            <div class="info-grid">
+                <h3>Реквизиты для оплаты</h3>
+                <p><strong>Получатель:</strong> ТСН СНТ "Родничок"</p>
+                <p><strong>ИНН:</strong> 1234567890</p>
+                <p><strong>КПП:</strong> 123456789</p>
+                <p><strong>Р/с:</strong> 40703810900000001234</p>
+                <p><strong>Банк:</strong> ПАО Сбербанк г. Москва</p>
+                <p><strong>К/с:</strong> 30101810400000000225</p>
+                <p><strong>БИК:</strong> 044525225</p>
+                
+                <h3>Расписание работы правления</h3>
+                <p><strong>Понедельник:</strong> 17:00 - 19:00</p>
+                <p><strong>Среда:</strong> 17:00 - 19:00</p>
+                <p><strong>Пятница:</strong> 17:00 - 19:00</p>
+                
+                <h3>Экстренные контакты</h3>
+                <p><strong>Полиция:</strong> 102</p>
+                <p><strong>Пожарная охрана:</strong> 101</p>
+                <p><strong>Скорая помощь:</strong> 103</p>
+                <p><strong>Дежурный электрик:</strong> +7 (999) 123-45-67</p>
+                <p><strong>Дежурный водитель:</strong> +7 (999) 234-56-78</p>
+            </div>
+        </section>
+
+        <section id="contacts" class="section">
+            <h2><i class="fas fa-address-book"></i> Контакты</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Адрес</h3>
+                    <p>Москва</p>
+                    <p>район Комунарка</p>
+                    <p>пос.Газопровод</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <h3>Телефоны</h3>
+                    <p>Председатель: +7 (495) 123-45-67</p>
+                    <p>Бухгалтер: +7 (495) 234-56-78</p>
+                    <p>Канцелярия: +7 (495) 345-67-89</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Электронная почта</h3>
+                    <p>info@rodnichok-snt.ru</p>
+                    <p>board@rodnichok-snt.ru</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <h3>Режим работы</h3>
+                    <p>Пн-Пт: 9:00 - 18:00</p>
+                    <p>Сб: 9:00 - 14:00</p>
+                    <p>Вс: выходной</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 ТСН СНТ "Родничок". Все права защищены.</p>
+            <p>Разработано с любовью для членов товарищества</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Закрываем мобильное меню
+                    document.getElementById('navMenu').classList.remove('active');
+                }
+            });
+        });
+
+        // Закрытие меню при клике вне его
+        document.addEventListener('click', function(e) {
+            const nav = document.querySelector('nav');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!nav.contains(e.target) && !menuBtn.contains(e.target)) {
+                document.getElementById('navMenu').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
